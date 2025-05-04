@@ -1,0 +1,68 @@
+package vcmsa.ci.taariq_faker_st10479271_imad_assignement_2
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+class FlashcardQuestionScreen : AppCompatActivity() {
+
+    var question = arrayOf<String>(
+        "Question 1 /n" +"The world cup was hosted in Qatar in 2022",
+        "Question 2 /n" +"The US dollar in more valuable than the South African Rand",
+        "Question 3 /n" + "Humans have 4 lungs ",
+        "Question 4 /n" + "Humans can breathe under water",
+        "Question 5 /n" + "There is more ants than there is humans"
+    )
+
+    var answers= arrayOf(
+        true,
+        true,
+        false,
+        false,
+        true
+    )
+
+    var score=0
+
+    var currentIndex=0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_flashcard_question_screen)
+
+         val trueButton= findViewById<Button>(R.id.trueButton)
+        val  falseButton= findViewById<Button>(R.id.falseButton)
+        val questionText=findViewById<TextView>(R.id.questionText)
+        val nextButton=findViewById<Button>(R.id.nextButton)
+
+        showQuestion(currentIndex)
+
+        trueButton.setOnClickListener {
+
+            checkAnswer(true)
+        }
+
+        falseButton.setOnClickListener {
+
+            checkAnswer(false)
+        }
+
+        nextButton.setOnClickListener {
+            currentIndex++
+        }
+
+
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+    }
+}
