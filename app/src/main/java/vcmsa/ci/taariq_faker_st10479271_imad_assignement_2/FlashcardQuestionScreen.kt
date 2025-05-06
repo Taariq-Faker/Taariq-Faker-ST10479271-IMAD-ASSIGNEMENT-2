@@ -8,15 +8,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 
 class FlashcardQuestionScreen : AppCompatActivity() {
 
     var questions = arrayOf<String>(
-        "Question 1 /n" +"The world cup was hosted in Qatar in 2022",
-        "Question 2 /n" +"The US dollar in more valuable than the South African Rand",
-        "Question 3 /n" + "Humans have 4 lungs ",
-        "Question 4 /n" + "Humans can breathe under water",
-        "Question 5 /n" + "There is more ants than there is humans"
+        "Question 1: " +"The world cup was hosted in Qatar in 2022",
+        "Question 2:" +"The US dollar in more valuable than the South African Rand",
+        "Question 3: " + "Humans have 4 lungs ",
+        "Question 4: " + "Humans can breathe under water",
+        "Question 5: " + "There is more ants than there is humans"
     )
 
     var answers= arrayOf(
@@ -45,8 +46,9 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         val questionText = findViewById<TextView>(R.id.questionText)
         val nextButton = findViewById<Button>(R.id.nextButton)
         val scoreTextView=findViewById<TextView>(R.id.scoreText)
+        val finalScore=findViewById<Button>(R.id.finalScoreButton)
 
-        showQuestion(currentIndex)
+        showQuestion(currentIndex, questionText)
 
         trueButton.setOnClickListener {
 
@@ -60,53 +62,42 @@ class FlashcardQuestionScreen : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             currentIndex++
+            showQuestion(currentIndex, questionText)
         }
         if (currentIndex < totalQuestions) {
-            showQuestion(currentIndex)
+            showQuestion(currentIndex, questionText)
             trueButton.isEnabled = true
             falseButton.isEnabled = true
         } else {
-            FinalScore()
-        }
-
-        for (question in questions) {
-            questionText.setText("Flashcard:+ $question")
-        }
-
-        fun showQuestion (index:Int){
-            questionText.text="Question ${index +1}:${questions[index]}"
-
-        }
-        fun checkAnswer(studentAnswer:Boolean)
-        {
-            if (studentAnswer==answers[currentIndex]) {
-                Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()
-            }
-            else {
-                Toast.makeText(
-                    this@FlashcardQuestionScreen,
-                    "The answer is incorrect",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-
-        fun FinalScore()
-        {
             questionText.text="Quiz Complete"
             scoreTextView.text="You score: $score out of $totalQuestions"
             trueButton.isEnabled=false
             falseButton.isEnabled=false
             nextButton.isEnabled=false
+            finalScore.isVisible=true
         }
 
 
 
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+    fun showQuestion (index:Int, tv:TextView){
+        tv.text=questions[index]
+    }
+
+    fun checkAnswer(studentAnswer:Boolean)
+    {
+        if (studentAnswer==answers[currentIndex]) {
+            Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()
+        }
+        else {
+            Toast.makeText(
+                this@FlashcardQuestionScreen,
+                "The answer is incorrect",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
+
+
 }
