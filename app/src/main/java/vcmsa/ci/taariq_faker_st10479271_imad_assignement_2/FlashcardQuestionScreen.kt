@@ -3,6 +3,7 @@ package vcmsa.ci.taariq_faker_st10479271_imad_assignement_2
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -43,6 +44,7 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         val falseButton = findViewById<Button>(R.id.falseButton)
         val questionText = findViewById<TextView>(R.id.questionText)
         val nextButton = findViewById<Button>(R.id.nextButton)
+        val scoreTextView=findViewById<TextView>(R.id.scoreText)
 
         showQuestion(currentIndex)
 
@@ -60,11 +62,11 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             currentIndex++
         }
         if (currentIndex < totalQuestions) {
-            showQuetstion(currentIndex)
+            showQuestion(currentIndex)
             trueButton.isEnabled = true
             falseButton.isEnabled = true
         } else {
-            showFinalScore()
+            FinalScore()
         }
 
         for (question in questions) {
@@ -75,7 +77,28 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             questionText.text="Question ${index +1}:${questions[index]}"
 
         }
-        fun checkAnswer(studentAnswer:boolean)
+        fun checkAnswer(studentAnswer:Boolean)
+        {
+            if (studentAnswer==answers[currentIndex]) {
+                Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()
+            }
+            else {
+                Toast.makeText(
+                    this@FlashcardQuestionScreen,
+                    "The answer is incorrect",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        fun FinalScore()
+        {
+            questionText.text="Quiz Complete"
+            scoreTextView.text="You score: $score out of $totalQuestions"
+            trueButton.isEnabled=false
+            falseButton.isEnabled=false
+            nextButton.isEnabled=false
+        }
 
 
 
