@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class FlashcardQuestionScreen : AppCompatActivity() {
 
-    var question = arrayOf<String>(
+    var questions = arrayOf<String>(
         "Question 1 /n" +"The world cup was hosted in Qatar in 2022",
         "Question 2 /n" +"The US dollar in more valuable than the South African Rand",
         "Question 3 /n" + "Humans have 4 lungs ",
@@ -30,15 +30,19 @@ class FlashcardQuestionScreen : AppCompatActivity() {
 
     var currentIndex=0
 
+    var totalQuestions=questions.size
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_flashcard_question_screen)
 
-         val trueButton= findViewById<Button>(R.id.trueButton)
-        val  falseButton= findViewById<Button>(R.id.falseButton)
-        val questionText=findViewById<TextView>(R.id.questionText)
-        val nextButton=findViewById<Button>(R.id.nextButton)
+        val trueButton = findViewById<Button>(R.id.trueButton)
+        val falseButton = findViewById<Button>(R.id.falseButton)
+        val questionText = findViewById<TextView>(R.id.questionText)
+        val nextButton = findViewById<Button>(R.id.nextButton)
 
         showQuestion(currentIndex)
 
@@ -55,6 +59,23 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         nextButton.setOnClickListener {
             currentIndex++
         }
+        if (currentIndex < totalQuestions) {
+            showQuetstion(currentIndex)
+            trueButton.isEnabled = true
+            falseButton.isEnabled = true
+        } else {
+            showFinalScore()
+        }
+
+        for (question in questions) {
+            questionText.setText("Flashcard:+ $question")
+        }
+
+        fun showQuestion (index:Int){
+            questionText.text="Question ${index +1}:${questions[index]}"
+
+        }
+        fun checkAnswer(studentAnswer:boolean)
 
 
 
