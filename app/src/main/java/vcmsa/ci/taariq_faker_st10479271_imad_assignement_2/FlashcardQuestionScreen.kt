@@ -46,8 +46,8 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         val falseButton = findViewById<Button>(R.id.falseButton)
         val questionText = findViewById<TextView>(R.id.questionText)
         val nextButton = findViewById<Button>(R.id.nextButton)
-        val scoreTextView=findViewById<TextView>(R.id.scoreText)
-        val finalScore=findViewById<Button>(R.id.finalScoreButton)
+
+
 
         showQuestion(currentIndex, questionText)
 
@@ -103,6 +103,7 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         val falseButton = findViewById<Button>(R.id.falseButton)
         val nextButton = findViewById<Button>(R.id.nextButton)
 
+
         if (studentAnswer==answers[currentIndex]) {
             Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()
             score++
@@ -112,6 +113,7 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             Toast.makeText(this@FlashcardQuestionScreen, "The answer is incorrect", Toast.LENGTH_LONG).show()
 
         }
+
         trueButton.isEnabled=false
         falseButton.isEnabled=false
         nextButton.isEnabled=true

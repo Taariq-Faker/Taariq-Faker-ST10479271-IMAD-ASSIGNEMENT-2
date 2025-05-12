@@ -16,10 +16,17 @@ class ScoreScreen : AppCompatActivity() {
         val score=intent.getIntExtra("score",0)
         val total=intent.getIntExtra("total",0)
         val scoreText=findViewById<TextView>(R.id.scoreText)
+        val feedbackText=findViewById<TextView>(R.id.feedbackText)
 
         scoreText.text="Score: $score out of $total"
 
 
+        if (score >3 ){
+            feedbackText.text="Great Job!"
+        }
+        else{
+            feedbackText.text="Keep Practising!"
+        }
 
 
 
