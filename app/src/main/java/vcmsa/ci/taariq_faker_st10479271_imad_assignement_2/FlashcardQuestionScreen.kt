@@ -1,5 +1,6 @@
 package vcmsa.ci.taariq_faker_st10479271_imad_assignement_2
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -71,10 +72,14 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             nextButton.isEnabled=false
         } else {
             questionText.text="Quiz Complete"
-            scoreTextView.text="You score: $score out of $totalQuestions"
+
+
 
 
             finalScore.isVisible=true
+            val intent= Intent(this,ScoreScreen::class.java)
+            startActivity(intent)
+
         }
 
 
@@ -88,9 +93,12 @@ class FlashcardQuestionScreen : AppCompatActivity() {
 
         tv.text=questions[index]
 
+
+
         trueButton.isEnabled=true
         falseButton.isEnabled=true
         nextButton.isEnabled=false
+
     }
 
     fun checkAnswer(studentAnswer:Boolean)
@@ -117,6 +125,7 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         falseButton.isEnabled=false
 
         nextButton.isEnabled=true
+
     }
 
 
