@@ -68,12 +68,12 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             showQuestion(currentIndex, questionText)
             trueButton.isEnabled = true
             falseButton.isEnabled = true
+            nextButton.isEnabled=false
         } else {
             questionText.text="Quiz Complete"
             scoreTextView.text="You score: $score out of $totalQuestions"
-            trueButton.isEnabled=false
-            falseButton.isEnabled=false
-            nextButton.isEnabled=false
+
+
             finalScore.isVisible=true
         }
 
@@ -82,13 +82,28 @@ class FlashcardQuestionScreen : AppCompatActivity() {
     }
 
     fun showQuestion (index:Int, tv:TextView){
+        val nextButton = findViewById<Button>(R.id.nextButton)
+        val trueButton = findViewById<Button>(R.id.trueButton)
+        val falseButton = findViewById<Button>(R.id.falseButton)
+
         tv.text=questions[index]
+
+        trueButton.isEnabled=true
+        falseButton.isEnabled=true
+        nextButton.isEnabled=false
     }
 
     fun checkAnswer(studentAnswer:Boolean)
     {
+        val trueButton = findViewById<Button>(R.id.trueButton)
+        val falseButton = findViewById<Button>(R.id.falseButton)
+        val nextButton = findViewById<Button>(R.id.nextButton)
         if (studentAnswer==answers[currentIndex]) {
             Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()
+
+            trueButton.isEnabled=false
+            falseButton.isEnabled=false
+            nextButton.isEnabled=true
         }
         else {
             Toast.makeText(
@@ -96,7 +111,12 @@ class FlashcardQuestionScreen : AppCompatActivity() {
                 "The answer is incorrect",
                 Toast.LENGTH_LONG
             ).show()
+
         }
+        trueButton.isEnabled=false
+        falseButton.isEnabled=false
+
+        nextButton.isEnabled=true
     }
 
 
