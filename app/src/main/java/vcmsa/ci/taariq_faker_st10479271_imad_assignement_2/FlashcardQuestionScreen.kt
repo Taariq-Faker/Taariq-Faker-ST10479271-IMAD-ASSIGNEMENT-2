@@ -63,23 +63,19 @@ class FlashcardQuestionScreen : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             currentIndex++
-            showQuestion(currentIndex, questionText)
-        }
-        if (currentIndex < totalQuestions) {
-            showQuestion(currentIndex, questionText)
-            trueButton.isEnabled = true
-            falseButton.isEnabled = true
-            nextButton.isEnabled=false
-        } else {
-            questionText.text="Quiz Complete"
 
 
+            if (currentIndex < totalQuestions) {
+                showQuestion(currentIndex, questionText)
+            } else {
+                val intent = Intent(this, ScoreScreen::class.java)
+                intent.putExtra("score", score)
+                intent.putExtra("total", totalQuestions)
+                startActivity(intent)
+                finish()
 
 
-            finalScore.isVisible=true
-            val intent= Intent(this,ScoreScreen::class.java)
-            startActivity(intent)
-
+            }
         }
 
 
@@ -106,24 +102,18 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         val trueButton = findViewById<Button>(R.id.trueButton)
         val falseButton = findViewById<Button>(R.id.falseButton)
         val nextButton = findViewById<Button>(R.id.nextButton)
+
         if (studentAnswer==answers[currentIndex]) {
             Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()
+            score++
 
-            trueButton.isEnabled=false
-            falseButton.isEnabled=false
-            nextButton.isEnabled=true
         }
         else {
-            Toast.makeText(
-                this@FlashcardQuestionScreen,
-                "The answer is incorrect",
-                Toast.LENGTH_LONG
-            ).show()
+            Toast.makeText(this@FlashcardQuestionScreen, "The answer is incorrect", Toast.LENGTH_LONG).show()
 
         }
         trueButton.isEnabled=false
         falseButton.isEnabled=false
-
         nextButton.isEnabled=true
 
     }
