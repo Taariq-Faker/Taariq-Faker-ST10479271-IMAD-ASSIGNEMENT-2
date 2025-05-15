@@ -1,6 +1,7 @@
 package vcmsa.ci.taariq_faker_st10479271_imad_assignement_2
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,17 +18,32 @@ class ScoreScreen : AppCompatActivity() {
         val total=intent.getIntExtra("total",0)
         val scoreText=findViewById<TextView>(R.id.scoreText)
         val feedbackText=findViewById<TextView>(R.id.feedbackText)
+        val exitButton=findViewById<Button>(R.id.exitButton)
+        val reviewButton=findViewById<Button>(R.id.reviewButton)
+        val questions=intent.getIntExtra("Questons",0)
+        val answer=intent.getIntExtra("Answer",0)
+
 
         scoreText.text="Score: $score out of $total"
 
 
-        if (score >3 ){
+        if (score >=3 ){
             feedbackText.text="Great Job!"
         }
         else{
             feedbackText.text="Keep Practising!"
         }
 
+        exitButton.setOnClickListener {
+            finish()
+
+        }
+
+        reviewButton.setOnClickListener {
+            feedbackText.text=
+
+
+        }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

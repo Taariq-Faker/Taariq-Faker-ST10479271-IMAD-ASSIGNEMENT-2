@@ -71,6 +71,9 @@ class FlashcardQuestionScreen : AppCompatActivity() {
                 val intent = Intent(this, ScoreScreen::class.java)
                 intent.putExtra("score", score)
                 intent.putExtra("total", totalQuestions)
+                intent.putExtra("Questions",questions)
+                intent.putExtra(" Answer",answers)
+
                 startActivity(intent)
                 finish()
 
@@ -78,9 +81,20 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun showQuestionLoop(tv:TextView){
+        for (i in questions.indices){
+            currentIndex=i
+            showQuestion(currentIndex, tv)
+            break
+
+        }
 
 
     }
+
+
 
     fun showQuestion (index:Int, tv:TextView){
         val nextButton = findViewById<Button>(R.id.nextButton)
