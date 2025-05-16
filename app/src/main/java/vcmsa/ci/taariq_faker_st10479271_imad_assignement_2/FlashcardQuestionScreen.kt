@@ -13,6 +13,8 @@ import androidx.core.view.isVisible
 
 class FlashcardQuestionScreen : AppCompatActivity() {
 
+
+    //Defining the array which will store the questions
     var questions = arrayOf<String>(
         "Question 1: " +"The world cup was hosted in Qatar in 2022",
         "Question 2:" +"The US dollar in more valuable than the South African Rand",
@@ -21,6 +23,8 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         "Question 5: " + "There is more ants than there is humans"
     )
 
+
+    //Deifning the array what will store the answers
     var answers= arrayOf(
         true,
         true,
@@ -29,8 +33,12 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         true
     )
 
+      var userAnswers=mutableListOf <Boolean?>()
+
+    //defining the score variable as well as setting it to 0 to ensure that it start at 0
     var score=0
 
+    //defining the current index variable as well as setting it to 0 to ensure that it start at 0
     var currentIndex=0
 
     var totalQuestions=questions.size
@@ -42,6 +50,8 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_flashcard_question_screen)
 
+
+        //Defining the buttons and textview so that it is accessable in the program
         val trueButton = findViewById<Button>(R.id.trueButton)
         val falseButton = findViewById<Button>(R.id.falseButton)
         val questionText = findViewById<TextView>(R.id.questionText)
@@ -51,8 +61,11 @@ class FlashcardQuestionScreen : AppCompatActivity() {
 
         showQuestion(currentIndex, questionText)
 
+
+            //Codinng the true button so then when pressed it performs as intended
         trueButton.setOnClickListener {
 
+            //When the button is clicked it cross referneces it the the check answer function
             checkAnswer(true)
         }
 
@@ -61,18 +74,29 @@ class FlashcardQuestionScreen : AppCompatActivity() {
             checkAnswer(false)
         }
 
+
+             //Coding the what happens once the next button is clicked
         nextButton.setOnClickListener {
+
+
             currentIndex++
 
+              //Using if statements to show the next question in the array until it reaches the end if the array
 
             if (currentIndex < totalQuestions) {
+                //Shows the question
                 showQuestion(currentIndex, questionText)
             } else {
+
+                //Coding the button so that  once the questions is complete it will automatically go over to the score screen
+                // connecting to the score screen as well as carrying over the information collected for the various variables
                 val intent = Intent(this, ScoreScreen::class.java)
                 intent.putExtra("score", score)
                 intent.putExtra("total", totalQuestions)
                 intent.putExtra("Questions",questions)
                 intent.putExtra(" Answer",answers)
+                intent.putExtra("userAnswer",userAnswers)
+
 
                 startActivity(intent)
                 finish()
@@ -117,6 +141,8 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         val falseButton = findViewById<Button>(R.id.falseButton)
         val nextButton = findViewById<Button>(R.id.nextButton)
 
+
+        userAnswers.add(studentAnswer)
 
         if (studentAnswer==answers[currentIndex]) {
             Toast.makeText(this@FlashcardQuestionScreen, "The answer is correct", Toast.LENGTH_LONG).show()

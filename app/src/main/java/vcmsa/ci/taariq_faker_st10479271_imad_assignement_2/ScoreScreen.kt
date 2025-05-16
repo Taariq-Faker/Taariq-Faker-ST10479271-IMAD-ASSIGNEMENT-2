@@ -40,7 +40,7 @@ class ScoreScreen : AppCompatActivity() {
         }
 
         reviewButton.setOnClickListener {
-            feedbackText.text=
+
 
 
         }
