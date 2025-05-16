@@ -128,9 +128,11 @@ class FlashcardQuestionScreen : AppCompatActivity() {
         tv.text=questions[index]
 
 
-
+      // Enabling the true and false button so that it appears in screen
         trueButton.isEnabled=true
         falseButton.isEnabled=true
+
+        //Disabling the next button so that it does not show once the question is shwon
         nextButton.isEnabled=false
 
     }
