@@ -92,6 +92,13 @@ flow of the questions
 7.	Layout Considerations
 •	Layout makes it easier for the users to navigate across the different screens 
 
+## Github Utilization
+
+Used GitHub in order to upload my code and backup my project on a regular basis. As well as allow access to other users if they would like access to the code .This also allow me to access my code from any device and I will then be able to push the updates to GitHub in which it will then store in my repository.
+
+## Github Actions
+Used a workflow to test the code of the application once it is pushed to GitHub. If the test passes the code is then safe to merge. If it fails it will show error logs and not merge the files.
+
 
 ## Screenshots
 - Home Screen/Welcome Page
@@ -125,9 +132,4 @@ flow of the questions
 ![Screenshot 2025-05-19 203422](https://github.com/user-attachments/assets/ca2e90f7-d102-4606-a027-bad759fed588)
 
 
-## Github Utilization
 
-Used GitHub in order to upload my code and backup my project on a regular basis. As well as allow access to other users if they would like access to the code .This also allow me to access my code from any device and I will then be able to push the updates to GitHub in which it will then store in my repository.
-
-## Github Actions
-Used a workflow to test the code of the application once it is pushed to GitHub. If the test passes the code is then safe to merge. If it fails it will show error logs so that you can fix it
