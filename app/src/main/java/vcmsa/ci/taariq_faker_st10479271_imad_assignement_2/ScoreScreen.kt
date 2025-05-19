@@ -35,7 +35,7 @@ class ScoreScreen : AppCompatActivity() {
         scoreText.text="Score: $score out of $total"
 
         //Using if statements to display feedback based on the users score
-        if (score >=3 ){
+        if (score >= 3) {
             feedbackTextView.text="Great Job!"
         }
         else{
@@ -61,7 +61,7 @@ class ScoreScreen : AppCompatActivity() {
                 //Uisng a loop to loop through all the questions and add the information to the review
                 for (i in questions.indices )
                 {
-                    reviewText.append(" ${questions [i]} \n")
+                    reviewText.append("${questions [i]} \n")
                     reviewText.append("Correct Answer: ${answers[i]}\n")
                     reviewText.append("Your Answer: ${userAnswers[i]}\n \n ")
 

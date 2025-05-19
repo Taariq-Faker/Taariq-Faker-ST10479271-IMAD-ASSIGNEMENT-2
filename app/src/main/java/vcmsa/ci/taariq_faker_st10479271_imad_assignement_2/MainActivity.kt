@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //Defining the buttons so that it is accessible in the program by referencing the id form the layout
         val startButton=findViewById<Button>(R.id.startButton)
 
 
@@ -23,20 +24,10 @@ class MainActivity : AppCompatActivity() {
             //creating a explicit intent in order to connect the welcome screen to the flash card screen
         val intent=Intent(this,FlashcardQuestionScreen::class.java)
 
-
         //starting the activity once the button is clicked
         startActivity(intent)
 
-
-
         }
-
-
-
-
-
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

@@ -75,6 +75,7 @@ class FlashcardQuestionScreen : AppCompatActivity() {
              //Coding the what happens once the next button is clicked
         nextButton.setOnClickListener {
 
+            //Acts as a loop so that once the user click next it loops through the array one at a time
             //Used in order to move onto the next question
             currentIndex++
 
