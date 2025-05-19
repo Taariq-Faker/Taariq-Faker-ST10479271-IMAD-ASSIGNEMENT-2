@@ -1,6 +1,7 @@
 package vcmsa.ci.taariq_faker_st10479271_imad_assignement_2
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -16,22 +17,27 @@ class ScoreScreen : AppCompatActivity() {
 
         val score=intent.getIntExtra("score",0)
         val total=intent.getIntExtra("total",0)
+        val questions = intent.getStringArrayExtra("Questions")
+        val answers=intent.getBooleanArrayExtra("Answer")
+        val userAnswers=intent.getBooleanArrayExtra("userAnswer")
+
+
+        val reviewTextView=findViewById<TextView>(R.id.reviewTextView)
         val scoreText=findViewById<TextView>(R.id.scoreText)
-        val feedbackText=findViewById<TextView>(R.id.feedbackText)
+        val feedbackTextView=findViewById<TextView>(R.id.feedbackText)
         val exitButton=findViewById<Button>(R.id.exitButton)
         val reviewButton=findViewById<Button>(R.id.reviewButton)
-        val questions=intent.getIntExtra("Questons",0)
-        val answer=intent.getIntExtra("Answer",0)
+
 
 
         scoreText.text="Score: $score out of $total"
 
 
         if (score >=3 ){
-            feedbackText.text="Great Job!"
+            feedbackTextView.text="Great Job!"
         }
         else{
-            feedbackText.text="Keep Practising!"
+            feedbackTextView.text="Keep Practising!"
         }
 
         exitButton.setOnClickListener {
@@ -41,15 +47,31 @@ class ScoreScreen : AppCompatActivity() {
 
         reviewButton.setOnClickListener {
 
+            if ( questions!= null && answers!=null && userAnswers!=null){
+
+                val reviewText=StringBuilder()
+                for (i in questions.indices )
+                {
+                    reviewText.append("Q${i +1}: ${questions [i]} \n")
+                    reviewText.append("Correct Answer: ${answers[i]}\n")
+                    reviewText.append("Your Answer: ${userAnswers[i]}\n \n ")
+
+
+                    scoreText.text=""
+                    feedbackTextView.text=""
+
+                }
+
+                reviewTextView.text=reviewText.toString()
+                reviewTextView.visibility= View.VISIBLE
+
+            }
+
 
 
         }
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
         }
     }
-}
