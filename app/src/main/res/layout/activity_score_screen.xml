@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_colorful_banner_modern_design_677411_3855"
+    android:background="@drawable/abstract_background_gradient_colorful_design_677411_3431"
     tools:context=".ScoreScreen">
 
   <TextView
@@ -19,7 +19,7 @@
       android:textSize="20sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.551"
+      app:layout_constraintHorizontal_bias="0.497"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.142" />
@@ -35,7 +35,7 @@
       android:textSize="20sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.544"
+      app:layout_constraintHorizontal_bias="0.497"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.255" />
@@ -47,10 +47,10 @@
       android:text="Review Answers"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.293"
+      app:layout_constraintHorizontal_bias="0.212"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.844" />
+      app:layout_constraintVertical_bias="0.755" />
 
   <Button
       android:id="@+id/exitButton"
@@ -59,22 +59,34 @@
       android:text="Exit"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.845"
+      app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.844" />
+      app:layout_constraintVertical_bias="0.85" />
 
   <TextView
       android:id="@+id/reviewTextView"
-      android:layout_width="307dp"
-      android:layout_height="500dp"
+      android:layout_width="326dp"
+      android:layout_height="473dp"
       android:fontFamily="@font/anton"
       android:textColor="@color/white"
       android:textSize="14sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.596"
+      app:layout_constraintHorizontal_bias="0.494"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.151" />
+      app:layout_constraintVertical_bias="0.096" />
+
+  <Button
+      android:id="@+id/scoreButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Score"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.724"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.755" />
 </androidx.constraintlayout.widget.ConstraintLayout>
