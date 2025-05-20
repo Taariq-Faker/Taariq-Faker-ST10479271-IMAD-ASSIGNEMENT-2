@@ -58,12 +58,13 @@ class ScoreScreen : AppCompatActivity() {
                 //Creating a string builder to build the review text
                 val reviewText=StringBuilder()
 
-                //Uisng a loop to loop through all the questions and add the information to the review
+                //Using a loop to loop through all the questions and add the information to the review
                 for (i in questions.indices )
                 {
                     reviewText.append("${questions [i]} \n")
-                    reviewText.append("Correct Answer: ${answers[i]}\n")
-                    reviewText.append("Your Answer: ${userAnswers[i]}\n \n ")
+                    reviewText.append("Your Answer: ${userAnswers[i]}\n")
+                    reviewText.append("Correct Answer: ${answers[i]}\n \n")
+
 
 
                     //Clearing the score and feedback when showing the review
